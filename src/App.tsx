@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { motion, AnimatePresence, type Variants } from 'framer-motion';
 
+const isApplicationOpen = false;
+
 // --- Configuration & Animation Variants ---
 const fadeInUp: Variants = {
     hidden: { opacity: 0, y: 40 },
@@ -44,19 +46,32 @@ const RoleAccordion = ({title, description, stack, isBeta = false, note}: {
     note?: string
 }) => {
     const [isOpen, setIsOpen] = useState(false);
-
     return (
-        <motion.div variants={fadeInUp} className="bg-white rounded-3xl shadow-sm hover:shadow-md transition-shadow border border-gray-100 overflow-hidden mb-6">
+        <motion.div
+            variants={fadeInUp}
+            className="bg-white rounded-3xl shadow-sm hover:shadow-md transition-shadow border border-gray-100 overflow-hidden mb-6 h-fit"
+        >
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="w-full text-left p-8 flex justify-between items-center focus:outline-none"
+                className="w-full text-left p-6 md:p-8 flex flex-row items-center justify-between gap-3 md:gap-4 focus:outline-none"
             >
-                <div className="flex items-center gap-3">
-                    <h3 className="text-2xl font-bold text-gray-900">{title}</h3>
-                    {isBeta && <span className="bg-knutice-light text-knutice text-xs font-bold px-3 py-1 rounded-full">Founding Member</span>}
+                {/* Left Side: Title & Badge Group (Strict Row) */}
+                <div className="flex flex-row items-center gap-2 flex-1 min-w-0">
+                    <h3 className="text-lg md:text-2xl font-bold text-gray-900 leading-tight truncate">
+                        {title}
+                    </h3>
+                    {isBeta && (
+                        <span className="bg-knutice-light text-knutice text-[9px] md:text-xs font-bold px-2 md:px-3 py-1 rounded-full whitespace-nowrap flex-shrink-0">
+                            Founding Member
+                        </span>
+                    )}
                 </div>
-                <div className={`transform transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}>
-                    <svg className="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+
+                {/* Right Side: The Arrow */}
+                <div className={`transform transition-transform duration-300 ${isOpen ? 'rotate-180' : ''} flex-shrink-0`}>
+                    <svg className="w-5 h-5 md:w-6 md:h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path d="M19 9l-7 7-7-7" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
                 </div>
             </button>
 
@@ -155,14 +170,21 @@ export default function KnuticeRecruiting() {
             {/* Navigation */}
             <nav className="fixed top-0 w-full bg-white/80 backdrop-blur-md z-50 border-b border-gray-100 px-6 py-4 flex justify-between items-center">
                 <div className="text-xl font-bold tracking-tight">KNUTICE</div>
-                <a
-                    href={googleFormLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="bg-knutice text-white px-5 py-2 rounded-full font-semibold text-sm hover:bg-knutice-dark transition-colors"
-                >
-                    지원하기
-                </a>
+                <button
+                    onClick={() => {
+                        if (!isApplicationOpen) {
+                            alert("지원 기간이 아닙니다. 3월 3일에 모집이 시작되니 조금만 기다려주세요!");
+                        } else {
+                            window.open(googleFormLink, "_blank");
+                        }
+                    }}
+                    className={`px-5 py-2 rounded-full font-semibold text-sm transition-colors ${
+                        isApplicationOpen
+                            ? "bg-knutice text-white hover:bg-knutice-dark shadow-knutice"
+                            : "bg-gray-100 text-gray-400 cursor-not-allowed"
+                    }`} >
+                    {isApplicationOpen ? "팀에 합류하기" : "3월 3일 모집 시작"}
+                </button>
             </nav>
 
             {/* Hero Section */}
@@ -171,8 +193,8 @@ export default function KnuticeRecruiting() {
                     <motion.h1 variants={fadeInUp} className="text-5xl md:text-7xl font-extrabold tracking-tight leading-tight mb-6 break-keep">
                         우리 학교의 불편함,<br />
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-knutice to-indigo-600">
-              우리가 직접 해결해요.
-            </span>
+                            우리가 직접 해결해요.
+                        </span>
                     </motion.h1>
                     <motion.p variants={fadeInUp} className="text-xl md:text-2xl text-gray-500 mb-10 font-medium max-w-2xl mx-auto leading-relaxed break-keep">
                         국립한국교통대학교 공지사항 알리미 KNUTICE.<br/>
@@ -407,7 +429,7 @@ export default function KnuticeRecruiting() {
                 >
                     <div className="text-center mb-16">
                         <h2 className="text-3xl font-bold mb-4">지원 프로세스</h2>
-                        <p className="text-gray-500 text-lg">복잡한 절차보다는 서로를 알아가는 시간을 가져요.</p>
+                        <p className="text-gray-500 break-keep text-lg">복잡한 절차보다는 서로를 알아가는 시간을 가져요.</p>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
@@ -441,14 +463,34 @@ export default function KnuticeRecruiting() {
                 >
                     <motion.h2 className="text-4xl font-bold mb-6 text-gray-900 break-keep">여러분의 코드로 학교를 바꿀 시간이에요.</motion.h2>
                         <p className="text-xl text-gray-500 mb-12 break-keep">즐겁게 도전하고 함께 성장할 동료를 기다립니다.</p>
-                        <a
-                            href={googleFormLink}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="bg-gray-900 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-800 transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-1 inline-block"
-                        >
-                            지금 합류하기
-                        </a>
+
+                        <div className="flex flex-col items-center gap-4">
+                            {!isApplicationOpen && (
+                                <motion.span
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    className="bg-knutice-light text-knutice text-xs font-bold px-3 py-1 rounded-full border border-knutice-soft"
+                                >
+                                    Coming Soon: Mar 3rd
+                                </motion.span>
+                            )}
+
+                            <button
+                                onClick={() => {
+                                    if (!isApplicationOpen) {
+                                        alert("지원 기간이 아닙니다. 3월 3일에 모집이 시작되니 조금만 기다려주세요!");
+                                    } else {
+                                        window.open(googleFormLink, "_blank");
+                                    }
+                                }}
+                                className={`px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 ${
+                                    isApplicationOpen
+                                        ? "bg-knutice text-white hover:bg-knutice-dark shadow-knutice"
+                                        : "bg-gray-100 text-gray-400 cursor-not-allowed"
+                                }`} >
+                                {isApplicationOpen ? "팀에 합류하기" : "3월 3일 모집 시작"}
+                            </button>
+                        </div>
                 </motion.div>
             </section>
 
@@ -462,13 +504,13 @@ export default function KnuticeRecruiting() {
                     <div className="flex justify-center gap-4">
                         <a
                             href="mailto:sample@knutice.com"
-                            className="px-6 py-3 bg-white border border-gray-200 rounded-2xl text-sm font-semibold hover:bg-gray-50 transition-colors"
+                            className="px-6 py-3 bg-white border border-gray-200 rounded-2xl text-sm font-semibold break-keep hover:bg-gray-50 transition-colors"
                         >
                             이메일로 문의하기
                         </a>
                         <a
                             href="https://github.com/KNUTICE"
-                            className="px-6 py-3 bg-gray-900 text-white rounded-2xl text-sm font-semibold hover:bg-gray-800 transition-colors"
+                            className="px-6 py-3 bg-gray-900 text-white rounded-2xl text-sm font-semibold break-keep hover:bg-gray-800 transition-colors"
                         >
                             GitHub 방문하기
                         </a>

@@ -148,7 +148,7 @@ const TeamMemberCard = ({name, role, tags, description, githubId }: {
 );
 
 export default function KnuticeRecruiting() {
-    const googleFormLink = "https://forms.google.com/your-form-link-here";
+    const googleFormLink = "https://forms.gle/q2mAo43WWWKEd4Mc7";
 
     return (
         <div className="bg-[#F9FAFB] min-h-screen font-sans text-gray-900 selection:bg-blue-200">
@@ -207,7 +207,7 @@ export default function KnuticeRecruiting() {
 
                     <div className="max-w-3xl mx-auto text-left md:text-center space-y-6">
                         <motion.p variants={fadeInUp} className="text-gray-600 leading-relaxed text-lg break-keep">
-                            KNUTICE는 매일 500명이 넘는 학우들이 사용하는 서비스로 자리 잡았어요. 현재 팀을 조율하는 iOS 개발자, 안드로이드 개발자, 그리고 백엔드 개발자까지 총 3명의 팀원이 즐겁게 서비스를 키워가고 있답니다.
+                            KNUTICE는 매달 500명이 넘는 학우들이 사용하는 서비스로 자리 잡았어요. 현재 팀을 조율하는 iOS 개발자, 안드로이드 개발자, 그리고 백엔드 개발자까지 총 3명의 팀원이 즐겁게 서비스를 키워가고 있답니다.
                         </motion.p>
 
                         {/* Combined Callout Box for High Impact Selling Points */}
@@ -256,21 +256,21 @@ export default function KnuticeRecruiting() {
                             role="iOS Developer"
                             githubId="jeongHunE"
                             tags={["Alumni", "iOS Lead"]}
-                            description="iOS 앱 아키텍처 설계와 전반적인 팀 조율을 담당하고 있어요. 아이폰 사용자들에게 최적화된 UX를 제공하기 위해 고민하고 실천합니다."
+                            description="iOS 앱 아키텍처 설계와 전반적인 팀 조율을 담당하고 있어요. 아이폰 사용자들에게 최적화된 UX를 제공하기 위해 고민하고 실천하고 있어요."
                         />
                         <TeamMemberCard
                             name="안드로이드 개발자"
                             role="Android Developer"
                             githubId="doyoonkim3312"
                             tags={["Android Lead"]}
-                            description="안드로이드 앱의 전반적인 개발과 유지보수를 담당하고 있어요. 탄탄한 설계를 바탕으로 사용자에게 가장 신뢰받는 앱을 만드는 데 집중합니다."
+                            description="안드로이드 앱의 전반적인 개발과 유지보수를 담당하고 있어요. 탄탄한 설계를 바탕으로 사용자에게 가장 신뢰받는 앱을 만드는 데 집중하고 있어요."
                         />
                         <TeamMemberCard
                             name="백엔드 개발자"
                             role="Backend Developer"
                             githubId="seob7"
                             tags={["Alumni", "Industry Pro"]}
-                            description="현재 IT 기업에서 근무 중인 현직 개발자예요. 실무에서의 경험을 팀에 공유하며, 안정적인 서버 환경과 데이터 파이프라인 구축을 지원합니다."
+                            description="현재 IT 기업에서 근무 중인 현직 개발자예요. 실무에서의 경험을 팀에 공유하며, 안정적인 서버 환경과 데이터 파이프라인 구축을 지원하고 있어요."
                         />
                     </div>
                 </motion.div>
@@ -302,7 +302,7 @@ export default function KnuticeRecruiting() {
                             },
                             {
                                 title: "강력한 네이티브 역량 확보",
-                                desc: "React Native도 좋지만, 최고의 기업들은 여전히 네이티브를 원해요. 안드로이드와 iOS의 깊은 원리를 이해하는 '희소성 있는 개발자'가 되어보세요."
+                                desc: "OS와 가장 가까운 곳에서 서비스의 작동 원리를 깊이 있게 고민해 보세요. 플랫폼을 근본적으로 이해하는 경험은 어떤 도구를 쓰더라도 흔들리지 않는 여러분만의 강력한 무기가 되어줄 거에요."
                             },
                             {
                                 title: "취업을 위한 진짜 포트폴리오",
@@ -338,6 +338,16 @@ export default function KnuticeRecruiting() {
                             <p className="font-bold text-gray-900 mb-2">Q. 시간 할애를 얼마나 해야 하나요?</p>
                             <p className="text-gray-500 break-keep">학업이 최우선이에요! 일주일에 한 번 정도 온라인 미팅을 통해 진행 상황을 공유하고, 각자의 페이스에 맞춰 즐겁게 개발하는 것을 목표로 합니다.</p>
                         </motion.div>
+                        <motion.div variants={fadeInUp}>
+                            <p className="font-bold text-gray-900 mb-2 break-keep">Q. 네이티브(Kotlin/Swift) 경험이 없는데, RN이나 Flutter 개발자도 합류할 수 있나요?</p>
+                            <p className="text-gray-500 break-keep leading-relaxed">
+                                그럼요! 저희는 기술의 틀에 갇히기보다 '최선의 사용자 경험'을 만드는 것을 더 중요하게 생각해요.
+                                언제나 더 나은 해결책을 찾기 위해 새로운 기술 도입에 유연하게 열려 있어요.
+                                다만, 현재 KNUTICE의 심장은 네이티브 기술로 탄탄하게 구축되어 있어요.
+                                따라서 기존의 코드를 이해하고 조화롭게 연결하는 과정에서 네이티브 언어를 함께 탐구하려는 마음가짐이 있다면,
+                                크로스 플랫폼 개발자분들에게도 성장의 큰 기회가 될 거라 믿고 있어요.
+                            </p>
+                        </motion.div>
                     </div>
                 </motion.div>
             </section>
@@ -371,7 +381,7 @@ export default function KnuticeRecruiting() {
                     />
 
                     <RoleAccordion
-                        title="Web 프론트엔드"
+                        title="Web 개발자"
                         isBeta={true}
                         description="웹 팀은 KNUTICE의 생태계를 확장할 첫 파운딩 멤버를 모셔요! 관리자 페이지부터 공지 통합 웹 서비스까지, 제로베이스부터 우리 팀만의 웹 표준을 만들어가는 즐거움을 느껴보세요."
                         stack={["React", "TypeScript", "Vite", "Tailwind CSS", "Framer Motion", "Zustand", "React Query"]}

@@ -19,8 +19,30 @@ const staggerContainer: Variants = {
     }
 };
 
+// --- Simple SVG Icon Set (Themed to your UI) ---
+const TechIcon = ({ name }: { name: string }) => {
+    const icons: Record<string, React.ReactNode> = {
+        kotlin: <path d="M24 24H0V0h24L12 12z" />, // Simple Kotlin Shape
+        swift: <path d="M12 2s-4 4-4 10c0 4 2 6 2 6l2-2s-2-2-2-4 2-4 2-4 2 2 2 4-2 4-2 4l2 2s2-2 2-6c0-6-4-10-4-10z" />, // Swift-esque
+        react: <path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 100-16 8 8 0 000 16z" />, // Atomic
+        backend: <path d="M4 7V5h16v2H4zm0 5h16v-2H4v2zm0 5h16v-2H4v2z" /> // Stack
+    };
+
+    return (
+        <svg className="w-4 h-4 fill-current mr-2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            {icons[name.toLowerCase()] || <circle cx="12" cy="12" r="5" />}
+        </svg>
+    );
+};
+
 // --- Accordion Component (Expandable List Item) ---
-const RoleAccordion = ({ title, description, stack, isBeta = false }: { title: string, description: string, stack: string[], isBeta?: boolean }) => {
+const RoleAccordion = ({title, description, stack, isBeta = false, note}: {
+    title: string,
+    description: string,
+    stack: string[],
+    isBeta?: boolean,
+    note?: string
+}) => {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
@@ -47,19 +69,31 @@ const RoleAccordion = ({ title, description, stack, isBeta = false }: { title: s
                         transition={{ duration: 0.3, ease: "easeInOut" }}
                         className="px-8 pb-8"
                     >
-                        {/* break-keep ensures lines only break at spaces */}
-                        <p className="text-gray-600 mb-6 leading-relaxed break-keep">
+                        <p className="text-gray-600 mb-8 leading-relaxed break-keep">
                             {description}
                         </p>
-                        <div className="bg-gray-50 p-6 rounded-2xl">
-                            <h4 className="text-sm font-bold text-gray-900 mb-3">함께 다루는 기술들</h4>
-                            <ul className="text-sm text-gray-500 space-y-2 font-medium">
-                                {stack.map((item, index) => (
-                                    <li key={index} className="flex items-start gap-2">
-                                        <span className="text-blue-500">•</span> {item}
-                                    </li>
-                                ))}
-                            </ul>
+
+                        <div className="flex flex-wrap gap-2">
+                            {stack.map((item, index) => (
+                                <div
+                                    key={index}
+                                    className="flex items-center bg-gray-50 border border-gray-100 px-4 py-2 rounded-xl text-sm font-semibold text-gray-700 hover:bg-blue-50 hover:border-blue-100 hover:text-blue-600 transition-colors"
+                                >
+                                    {(index === 0) && <TechIcon name={title.split(' ')[0]} />}
+                                    {item}
+                                </div>
+                            ))}
+
+                            {/* Special Note Badge - Vertically Centered */}
+                            {note && (
+                                <div className="w-full mt-4 p-4 bg-indigo-50 border border-indigo-100 rounded-2xl flex items-center gap-3">
+                                    {/* Changed to flex-shrink-0 to prevent the icon from squishing */}
+                                    <span className="text-lg flex-shrink-0">✨</span>
+                                    <p className="text-xs font-bold text-indigo-700 leading-normal break-keep">
+                                        {note}
+                                    </p>
+                                </div>
+                            )}
                         </div>
                     </motion.div>
                 )}
@@ -67,6 +101,33 @@ const RoleAccordion = ({ title, description, stack, isBeta = false }: { title: s
         </motion.div>
     );
 };
+
+const TeamMemberCard = ({ name, role, tags, description }: { name: string, role: string, tags: string[], description: string }) => (
+    <motion.div
+        variants={fadeInUp}
+        className="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm hover:shadow-md transition-all group flex flex-col h-full"
+    >
+        <div className="mb-6">
+            <div className="flex justify-between items-start mb-3">
+                <div>
+                    <h3 className="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors">{name}</h3>
+                    <p className="text-blue-600 font-medium text-sm">{role}</p>
+                </div>
+            </div>
+            {/* Multi-tag container */}
+            <div className="flex flex-wrap gap-2">
+                {tags.map((tag, index) => (
+                    <span key={index} className="bg-blue-50 text-blue-700 text-[10px] uppercase tracking-wider font-bold px-2 py-1 rounded-md border border-blue-100">
+            {tag}
+          </span>
+                ))}
+            </div>
+        </div>
+        <p className="text-gray-500 text-sm leading-relaxed break-keep mt-auto">
+            {description}
+        </p>
+    </motion.div>
+);
 
 export default function KnuticeRecruiting() {
     const googleFormLink = "https://forms.google.com/your-form-link-here";
@@ -155,6 +216,45 @@ export default function KnuticeRecruiting() {
                 </motion.div>
             </section>
 
+            {/* About Team Section */}
+            <section className="py-24 bg-white px-6">
+                <motion.div
+                    className="max-w-5xl mx-auto"
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.2 }}
+                    variants={staggerContainer}
+                >
+                    <motion.div className="text-center mb-16">
+                        <motion.h2 variants={fadeInUp} className="text-3xl font-bold mb-4">함께하는 사람들</motion.h2>
+                        <motion.p variants={fadeInUp} className="text-gray-500 text-lg break-keep">
+                            KNUTICE를 이끌어가는 팀원들을 소개할게요.
+                        </motion.p>
+                    </motion.div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <TeamMemberCard
+                            name="iOS 개발자"
+                            role="iOS Developer"
+                            tags={["Alumni", "iOS Lead"]}
+                            description="iOS 앱 아키텍처 설계와 전반적인 팀 조율을 담당하고 있어요. 아이폰 사용자들에게 최적화된 UX를 제공하기 위해 고민하고 실천합니다."
+                        />
+                        <TeamMemberCard
+                            name="안드로이드 개발자"
+                            role="Android Developer"
+                            tags={["Android Lead"]}
+                            description="안드로이드 앱의 전반적인 개발과 유지보수를 담당하고 있어요. 탄탄한 설계를 바탕으로 사용자에게 가장 신뢰받는 앱을 만드는 데 집중합니다."
+                        />
+                        <TeamMemberCard
+                            name="백엔드 개발자"
+                            role="Backend Developer"
+                            tags={["Alumni", "Industry Pro"]}
+                            description="현재 IT 기업에서 근무 중인 현직 개발자예요. 실무에서의 경험을 팀에 공유하며, 안정적인 서버 환경과 데이터 파이프라인 구축을 지원합니다."
+                        />
+                    </div>
+                </motion.div>
+            </section>
+
             {/* Roles Section */}
             <section className="py-24 bg-[#F9FAFB] px-6">
                 <motion.div
@@ -174,47 +274,27 @@ export default function KnuticeRecruiting() {
                     <RoleAccordion
                         title="iOS 개발자"
                         description="iOS 팀은 Swift 고유의 강점을 살려 아이폰 사용자들에게 최적화된 매끄러운 경험을 설계하고 있어요. 강력한 네이티브 성능과 직관적인 UI를 통해 학우들에게 필요한 가치를 직접 전달해 나가는 보람을 공유하고 싶어요."
-                        stack={[
-                            "Swift, SwiftUI, UiKit",
-                            "Combine / Swift Concurrency (async-await)",
-                            "Clean Architecture, MVVM 혹은 TCA",
-                            "CoreData / SwiftData"
-                        ]}
+                        stack={["Swift", "SwiftUI", "Combine", "Swift Concurrency", "Clean Architecture", "MVVM/TCA"]}
                     />
 
                     <RoleAccordion
                         title="Android 개발자"
                         description="안드로이드 팀은 MVI와 Clean Architecture를 기반으로 사용자에게 가장 견고하고 빠른 경험을 제공하는 데 집중하고 있어요. 생산성 높은 코드 구조와 최신 라이브러리를 활용해 안드로이드 개발의 즐거움을 함께 느껴봐요."
-                        stack={[
-                            "Kotlin, Jetpack Compose",
-                            "Coroutines & Flow",
-                            "Clean Architecture, MVI Pattern",
-                            "Pure Dagger 2 (Manual Injection)",
-                            "Room (FTS4), WorkManager"
-                        ]}
+                        stack={["Kotlin", "Jetpack Compose", "Coroutines", "Clean Architecture", "MVI", "Dagger 2", "Room FTS"]}
                     />
 
                     <RoleAccordion
                         title="Web 프론트엔드"
                         isBeta={true}
                         description="웹 팀은 KNUTICE의 생태계를 확장할 첫 파운딩 멤버를 모셔요! 관리자 페이지부터 공지 통합 웹 서비스까지, 제로베이스부터 우리 팀만의 웹 표준을 만들어가는 즐거움을 느껴보세요."
-                        stack={[
-                            "React, TypeScript, Vite",
-                            "Tailwind CSS, Framer Motion",
-                            "Zustand / React Query 등",
-                            "※ 파운딩 멤버의 제안에 따라 스택은 유연하게 변경 가능해요! ※"
-                        ]}
+                        stack={["React", "TypeScript", "Vite", "Tailwind CSS", "Framer Motion", "Zustand", "React Query"]}
+                        note="파운딩 멤버가 결정되면 팀원들의 경험과 제안에 따라 아키텍처와 기술 스택을 언제든 유연하게 논의하고 변경할 수 있어요."
                     />
 
                     <RoleAccordion
                         title="Backend 개발자"
                         description="백엔드 팀은 안정적인 알림 발송과 대용량 데이터 처리를 담당하며 서비스의 든든한 뿌리가 되어주고 있어요. 현직자 선배님과 함께 실무 수준의 인프라를 고민하며 시스템을 더 탄탄하게 다져갈 분을 찾아요."
-                        stack={[
-                            "Kotlin, Java",
-                            "Spring Boot",
-                            "Firebase Cloud Messaging (FCM) 연동",
-                            "Docker, RDBMS 최적화"
-                        ]}
+                        stack={["Kotlin/Java", "Spring Boot", "FCM", "Docker", "RDBMS"]}
                     />
                 </motion.div>
             </section>

@@ -53,7 +53,7 @@ const RoleAccordion = ({title, description, stack, isBeta = false, note}: {
             >
                 <div className="flex items-center gap-3">
                     <h3 className="text-2xl font-bold text-gray-900">{title}</h3>
-                    {isBeta && <span className="bg-blue-100 text-blue-600 text-xs font-bold px-3 py-1 rounded-full">Founding Member</span>}
+                    {isBeta && <span className="bg-knutice-light text-knutice text-xs font-bold px-3 py-1 rounded-full">Founding Member</span>}
                 </div>
                 <div className={`transform transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}>
                     <svg className="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
@@ -77,7 +77,7 @@ const RoleAccordion = ({title, description, stack, isBeta = false, note}: {
                             {stack.map((item, index) => (
                                 <div
                                     key={index}
-                                    className="flex items-center bg-gray-50 border border-gray-100 px-4 py-2 rounded-xl text-sm font-semibold text-gray-700 hover:bg-blue-50 hover:border-blue-100 hover:text-blue-600 transition-colors"
+                                    className="flex items-center bg-gray-50 border border-gray-100 px-4 py-2 rounded-xl text-sm font-semibold text-gray-700 hover:bg-blue-50 hover:border-knutice-soft hover:text-knutice transition-colors"
                                 >
                                     {(index === 0) && <TechIcon name={title.split(' ')[0]} />}
                                     {item}
@@ -102,24 +102,42 @@ const RoleAccordion = ({title, description, stack, isBeta = false, note}: {
     );
 };
 
-const TeamMemberCard = ({ name, role, tags, description }: { name: string, role: string, tags: string[], description: string }) => (
+const TeamMemberCard = ({name, role, tags, description, githubId }: {
+    name: string,
+    role: string,
+    tags: string[],
+    description: string,
+    githubId: string
+}) => (
     <motion.div
         variants={fadeInUp}
-        className="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm hover:shadow-md transition-all group flex flex-col h-full"
+        className="bg-white p-8 rounded-[2.5rem] border border-gray-100 shadow-sm hover:shadow-md transition-all group flex flex-col h-full"
     >
         <div className="mb-6">
-            <div className="flex justify-between items-start mb-3">
+            <div className="flex items-center justify-between gap-4 mb-5">
+
                 <div>
-                    <h3 className="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors">{name}</h3>
-                    <p className="text-blue-600 font-medium text-sm">{role}</p>
+                    <h3 className="text-lg font-bold text-gray-900 group-hover:text-knutice transition-colors">
+                        {name}
+                    </h3>
+                    <p className="text-knutice font-medium text-xs">
+                        {role}
+                    </p>
                 </div>
+
+                {/* GitHub Avatar: Circular and Professional */}
+                <img
+                    src={`https://github.com/${githubId}.png`}
+                    alt={name}
+                    className="w-14 h-14 rounded-full border-2 border-knutice-soft shadow-sm object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-300"
+                />
             </div>
-            {/* Multi-tag container */}
-            <div className="flex flex-wrap gap-2">
+
+            <div className="flex flex-wrap gap-2 mb-4">
                 {tags.map((tag, index) => (
-                    <span key={index} className="bg-blue-50 text-blue-700 text-[10px] uppercase tracking-wider font-bold px-2 py-1 rounded-md border border-blue-100">
-            {tag}
-          </span>
+                    <span key={index} className="bg-knutice-light text-knutice-strong text-[10px] uppercase tracking-wider font-bold px-2 py-1 rounded-md border border-knutice-soft">
+                        {tag}
+                    </span>
                 ))}
             </div>
         </div>
@@ -141,7 +159,7 @@ export default function KnuticeRecruiting() {
                     href={googleFormLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-blue-600 text-white px-5 py-2 rounded-full font-semibold text-sm hover:bg-blue-700 transition-colors"
+                    className="bg-knutice text-white px-5 py-2 rounded-full font-semibold text-sm hover:bg-knutice-dark transition-colors"
                 >
                     지원하기
                 </a>
@@ -152,7 +170,7 @@ export default function KnuticeRecruiting() {
                 <motion.div initial="hidden" animate="visible" variants={staggerContainer}>
                     <motion.h1 variants={fadeInUp} className="text-5xl md:text-7xl font-extrabold tracking-tight leading-tight mb-6 break-keep">
                         우리 학교의 불편함,<br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-knutice to-indigo-600">
               우리가 직접 해결해요.
             </span>
                     </motion.h1>
@@ -178,22 +196,22 @@ export default function KnuticeRecruiting() {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
                         <motion.div variants={fadeInUp} className="p-8 rounded-3xl bg-gray-50 flex flex-col items-center justify-center">
-                            <span className="text-5xl font-extrabold text-blue-600 mb-2">250+</span>
+                            <span className="text-5xl font-extrabold text-knutice mb-2">800+</span>
                             <span className="text-lg text-gray-600 font-medium">누적 사용자</span>
                         </motion.div>
                         <motion.div variants={fadeInUp} className="p-8 rounded-3xl bg-gray-50 flex flex-col items-center justify-center">
-                            <span className="text-5xl font-extrabold text-blue-600 mb-2">130+</span>
+                            <span className="text-5xl font-extrabold text-knutice mb-2">500+</span>
                             <span className="text-lg text-gray-600 font-medium">월간 활성 사용자 (MAU)</span>
                         </motion.div>
                     </div>
 
                     <div className="max-w-3xl mx-auto text-left md:text-center space-y-6">
                         <motion.p variants={fadeInUp} className="text-gray-600 leading-relaxed text-lg break-keep">
-                            KNUTICE는 매일 130명이 넘는 학우들이 사용하는 서비스로 자리 잡았어요. 현재 팀을 조율하는 iOS 개발자, 안드로이드 개발자, 그리고 백엔드 개발자까지 총 3명의 팀원이 즐겁게 서비스를 키워가고 있답니다.
+                            KNUTICE는 매일 500명이 넘는 학우들이 사용하는 서비스로 자리 잡았어요. 현재 팀을 조율하는 iOS 개발자, 안드로이드 개발자, 그리고 백엔드 개발자까지 총 3명의 팀원이 즐겁게 서비스를 키워가고 있답니다.
                         </motion.p>
 
                         {/* Combined Callout Box for High Impact Selling Points */}
-                        <motion.div variants={fadeInUp} className="bg-blue-50 text-blue-800 p-8 rounded-3xl text-left w-full border border-blue-100 space-y-6">
+                        <motion.div variants={fadeInUp} className="bg-blue-50 text-blue-800 p-8 rounded-3xl text-left w-full border border-knutice-soft space-y-6">
                             <div>
                                 <p className="font-bold text-lg mb-2 break-keep">💡 현직자 선배님과 함께하는 성장의 기회</p>
                                 <p className="text-blue-700/80 leading-relaxed break-keep">
@@ -236,21 +254,90 @@ export default function KnuticeRecruiting() {
                         <TeamMemberCard
                             name="iOS 개발자"
                             role="iOS Developer"
+                            githubId="jeongHunE"
                             tags={["Alumni", "iOS Lead"]}
                             description="iOS 앱 아키텍처 설계와 전반적인 팀 조율을 담당하고 있어요. 아이폰 사용자들에게 최적화된 UX를 제공하기 위해 고민하고 실천합니다."
                         />
                         <TeamMemberCard
                             name="안드로이드 개발자"
                             role="Android Developer"
+                            githubId="doyoonkim3312"
                             tags={["Android Lead"]}
                             description="안드로이드 앱의 전반적인 개발과 유지보수를 담당하고 있어요. 탄탄한 설계를 바탕으로 사용자에게 가장 신뢰받는 앱을 만드는 데 집중합니다."
                         />
                         <TeamMemberCard
                             name="백엔드 개발자"
                             role="Backend Developer"
+                            githubId="seob7"
                             tags={["Alumni", "Industry Pro"]}
                             description="현재 IT 기업에서 근무 중인 현직 개발자예요. 실무에서의 경험을 팀에 공유하며, 안정적인 서버 환경과 데이터 파이프라인 구축을 지원합니다."
                         />
+                    </div>
+                </motion.div>
+            </section>
+
+            {/* Growth & Learning Section */}
+            <section className="py-24 bg-gray-50 px-6">
+                <motion.div
+                    className="max-w-4xl mx-auto"
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.2 }}
+                    variants={staggerContainer}
+                >
+                    <div className="text-center mb-16">
+                        <h2 className="text-3xl font-bold mb-4 break-keep">함께하면 이런 것들을 얻어갈 수 있어요</h2>
+                        <p className="text-gray-500 text-lg break-keep">단순히 기능을 만드는 것을 넘어, 진짜 '엔지니어'로 성장하는 경험을 약속해요.</p>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        {[
+                            {
+                                title: "실제 사용자가 있는 프로덕트 운영",
+                                desc: "내가 짠 코드 한 줄이 500명의 학우에게 직접 닿는 경험은 유저 피드백을 통해 성장하는 가장 빠른 길이에요."
+                            },
+                            {
+                                title: "현직자의 1:1 코드 리뷰",
+                                desc: "실무에서 쓰이는 아키텍처와 협업 방식을 현직 선배님께 직접 배울 수 있어요. 혼자 공부할 때보다 10배는 더 깊이 있게 배울 수 있답니다."
+                            },
+                            {
+                                title: "강력한 네이티브 역량 확보",
+                                desc: "React Native도 좋지만, 최고의 기업들은 여전히 네이티브를 원해요. 안드로이드와 iOS의 깊은 원리를 이해하는 '희소성 있는 개발자'가 되어보세요."
+                            },
+                            {
+                                title: "취업을 위한 진짜 포트폴리오",
+                                desc: "단순한 팀 프로젝트가 아닌, 실제 스토어에 출시되고 운영되는 '살아있는 서비스'의 핵심 멤버였다는 사실은 어떤 자소서보다 강력해요."
+                            }
+                        ].map((item, i) => (
+                            <motion.div key={i} variants={fadeInUp} className="bg-white p-8 rounded-3xl border border-gray-100 flex flex-col items-start shadow-sm">
+                                <span className="text-knutice font-bold text-lg mb-3">0{i+1}.</span>
+                                <h4 className="font-bold text-xl mb-3 break-keep">{item.title}</h4>
+                                <p className="text-gray-500 text-sm leading-relaxed break-keep">{item.desc}</p>
+                            </motion.div>
+                        ))}
+                    </div>
+                </motion.div>
+            </section>
+
+            {/* Short FAQ Section */}
+            <section className="py-24 bg-white px-6">
+                <motion.div
+                    className="max-w-2xl mx-auto text-center"
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    variants={staggerContainer}
+                >
+                    <motion.h3 variants={fadeInUp} className="text-2xl font-bold mb-12">궁금해할 것 같아서 미리 준비했어요</motion.h3>
+                    <div className="space-y-8 text-left">
+                        <motion.div variants={fadeInUp}>
+                            <p className="font-bold text-gray-900 mb-2">Q. 아직 네이티브 언어가 익숙하지 않은데 괜찮을까요?</p>
+                            <p className="text-gray-500 break-keep">당연하죠! 저희도 처음엔 다 그랬는걸요. 기술은 같이 고민하며 배워가면 돼요. 저희가 가진 노하우를 아낌없이 공유해 드릴게요.</p>
+                        </motion.div>
+                        <motion.div variants={fadeInUp}>
+                            <p className="font-bold text-gray-900 mb-2">Q. 시간 할애를 얼마나 해야 하나요?</p>
+                            <p className="text-gray-500 break-keep">학업이 최우선이에요! 일주일에 한 번 정도 온라인 미팅을 통해 진행 상황을 공유하고, 각자의 페이스에 맞춰 즐겁게 개발하는 것을 목표로 합니다.</p>
+                        </motion.div>
                     </div>
                 </motion.div>
             </section>
@@ -299,18 +386,94 @@ export default function KnuticeRecruiting() {
                 </motion.div>
             </section>
 
-            {/* Footer */}
-            <footer className="py-32 bg-white flex flex-col items-center justify-center text-center px-6 border-t border-gray-100">
-                <h2 className="text-4xl font-bold mb-6 text-gray-900 break-keep">여러분의 코드로 학교를 바꿀 시간이에요.</h2>
-                <p className="text-xl text-gray-500 mb-12 break-keep">즐겁게 도전하고 함께 성장할 동료를 기다립니다.</p>
-                <a
-                    href={googleFormLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="bg-gray-900 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-800 transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-1 inline-block"
+            {/* Recruitment Process Section */}
+            <section className="py-24 bg-gray-50 px-6">
+                <motion.div
+                    className="max-w-4xl mx-auto"
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    variants={staggerContainer}
                 >
-                    지금 합류하기
-                </a>
+                    <div className="text-center mb-16">
+                        <h2 className="text-3xl font-bold mb-4">지원 프로세스</h2>
+                        <p className="text-gray-500 text-lg">복잡한 절차보다는 서로를 알아가는 시간을 가져요.</p>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
+                        {[
+                            { step: "01", title: "지원서 제출", desc: "구글 폼을 통해 지원서를 작성해 주세요." },
+                            { step: "02", title: "커피챗 (비대면)", desc: "서로의 가치관과 기술적인 관심사를 가볍게 나눠요." },
+                            { step: "03", title: "팀 합류", desc: "최종 합류를 결정하고 온보딩을 진행합니다." },
+                            { step: "04", title: "개발 시작!", desc: "본격적으로 KNUTICE의 일원이 되어 개발을 시작해요." }
+                        ].map((item, i) => (
+                            <motion.div key={i} variants={fadeInUp} className="relative z-10 flex flex-col items-center text-center">
+                                <div className="w-12 h-12 bg-knutice text-white rounded-full flex items-center justify-center font-bold mb-4 shadow-lg drop-shadow-knutice">
+                                    {item.step}
+                                </div>
+                                <h4 className="font-bold text-lg mb-2">{item.title}</h4>
+                                <p className="text-gray-500 text-xs leading-relaxed break-keep">{item.desc}</p>
+                            </motion.div>
+                        ))}
+                        {/* Background Line (Desktop only) */}
+                        <div className="hidden md:block absolute top-6 left-0 w-full h-[2px] bg-gray-200 -z-0" />
+                    </div>
+                </motion.div>
+            </section>
+
+            <section className="py-24 bg-white px-6">
+                <motion.div
+                    className="max-w-2xl mx-auto text-center"
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    variants={staggerContainer}
+                >
+                    <motion.h2 className="text-4xl font-bold mb-6 text-gray-900 break-keep">여러분의 코드로 학교를 바꿀 시간이에요.</motion.h2>
+                        <p className="text-xl text-gray-500 mb-12 break-keep">즐겁게 도전하고 함께 성장할 동료를 기다립니다.</p>
+                        <a
+                            href={googleFormLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="bg-gray-900 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-800 transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-1 inline-block"
+                        >
+                            지금 합류하기
+                        </a>
+                </motion.div>
+            </section>
+
+            {/* Contact Section */}
+            <section className="py-20 bg-white px-6">
+                <div className="max-w-xl mx-auto text-center border border-gray-100 rounded-[2.5rem] p-12 bg-gray-50/50">
+                    <h3 className="text-xl font-bold mb-4">궁금한 점이 있으신가요?</h3>
+                    <p className="text-gray-500 mb-8 break-keep text-sm">
+                        프로세스나 팀에 대해 더 알고 싶은 내용이 있다면 언제든 편하게 물어봐 주세요.
+                    </p>
+                    <div className="flex justify-center gap-4">
+                        <a
+                            href="mailto:sample@knutice.com"
+                            className="px-6 py-3 bg-white border border-gray-200 rounded-2xl text-sm font-semibold hover:bg-gray-50 transition-colors"
+                        >
+                            이메일로 문의하기
+                        </a>
+                        <a
+                            href="https://github.com/KNUTICE"
+                            className="px-6 py-3 bg-gray-900 text-white rounded-2xl text-sm font-semibold hover:bg-gray-800 transition-colors"
+                        >
+                            GitHub 방문하기
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            {/* Footer */}
+            <footer className="py-12 bg-white px-6 border-t border-gray-50"> {/* Use a very light gray for the top border */}
+                <div className="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+                    <p className="text-gray-400 text-xs">© 2026 KNUTICE Team. All rights reserved.</p>
+                    <div className="flex gap-6">
+                        {/* Additional links if needed */}
+                    </div>
+                </div>
             </footer>
         </div>
     );

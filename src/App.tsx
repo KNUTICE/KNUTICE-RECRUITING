@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence, type Variants } from 'framer-motion';
+import { Code2, Smartphone, Atom, Globe, Cpu, Terminal } from 'lucide-react';
 
 const isApplicationOpen = false;
 
@@ -23,17 +24,25 @@ const staggerContainer: Variants = {
 
 // --- Simple SVG Icon Set (Themed to your UI) ---
 const TechIcon = ({ name }: { name: string }) => {
-    const icons: Record<string, React.ReactNode> = {
-        kotlin: <path d="M24 24H0V0h24L12 12z" />, // Simple Kotlin Shape
-        swift: <path d="M12 2s-4 4-4 10c0 4 2 6 2 6l2-2s-2-2-2-4 2-4 2-4 2 2 2 4-2 4-2 4l2 2s2-2 2-6c0-6-4-10-4-10z" />, // Swift-esque
-        react: <path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 100-16 8 8 0 000 16z" />, // Atomic
-        backend: <path d="M4 7V5h16v2H4zm0 5h16v-2H4v2zm0 5h16v-2H4v2z" /> // Stack
+    // Mapping tech names to professional Lucide equivalents
+    const iconMap: Record<string, React.ElementType> = {
+        kotlin: Code2,      // Semantic: Clean code
+        android: Smartphone,
+        swift: Cpu,        // Semantic: Performance/System
+        ios: Smartphone,
+        react: Atom,        // Lucide actually has an 'Atom' icon!
+        web: Globe,
+        backend: Terminal,
     };
 
+    const IconComponent = iconMap[name.toLowerCase()] || Code2;
+
     return (
-        <svg className="w-4 h-4 fill-current mr-2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            {icons[name.toLowerCase()] || <circle cx="12" cy="12" r="5" />}
-        </svg>
+        <IconComponent
+            size={16}
+            className="mr-2 text-knutice stroke-[2.5px]"
+            // strokeWidth 2.5 gives it that bold, premium look
+        />
     );
 };
 
@@ -399,7 +408,7 @@ export default function KnuticeRecruiting() {
                     <RoleAccordion
                         title="Android 개발자"
                         description="안드로이드 팀은 MVI와 Clean Architecture를 기반으로 사용자에게 가장 견고하고 빠른 경험을 제공하는 데 집중하고 있어요. 생산성 높은 코드 구조와 최신 라이브러리를 활용해 안드로이드 개발의 즐거움을 함께 느껴봐요."
-                        stack={["Kotlin", "Jetpack Compose", "Coroutines", "Clean Architecture", "MVI", "Dagger 2", "Room FTS"]}
+                        stack={["Kotlin", "Jetpack Compose", "Kotlin Coroutine", "Clean Architecture", "MVI", "Dagger 2", "Room FTS"]}
                     />
 
                     <RoleAccordion
@@ -413,7 +422,7 @@ export default function KnuticeRecruiting() {
                     <RoleAccordion
                         title="Backend 개발자"
                         description="백엔드 팀은 안정적인 알림 발송과 대용량 데이터 처리를 담당하며 서비스의 든든한 뿌리가 되어주고 있어요. 현직자 선배님과 함께 실무 수준의 인프라를 고민하며 시스템을 더 탄탄하게 다져갈 분을 찾아요."
-                        stack={["Kotlin/Java", "Spring Boot", "FCM", "Docker", "RDBMS"]}
+                        stack={["Kotlin", "Spring Boot", "FCM", "Mongo DB", "Kotlin Coroutine", "Docker", "Hexagonal Architecture" ]}
                     />
                 </motion.div>
             </section>
@@ -503,7 +512,7 @@ export default function KnuticeRecruiting() {
                     </p>
                     <div className="flex justify-center gap-4">
                         <a
-                            href="mailto:sample@knutice.com"
+                            href="mailto:team.knutice@gmail.com"
                             className="px-6 py-3 bg-white border border-gray-200 rounded-2xl text-sm font-semibold break-keep hover:bg-gray-50 transition-colors"
                         >
                             이메일로 문의하기

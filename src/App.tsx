@@ -402,7 +402,7 @@ export default function KnuticeRecruiting() {
                     <RoleAccordion
                         title="iOS 개발자"
                         description="iOS 팀은 Swift 고유의 강점을 살려 아이폰 사용자들에게 최적화된 매끄러운 경험을 설계하고 있어요. 강력한 네이티브 성능과 직관적인 UI를 통해 학우들에게 필요한 가치를 직접 전달해 나가는 보람을 공유하고 싶어요."
-                        stack={["Swift", "SwiftUI", "Combine", "Swift Concurrency", "Clean Architecture", "MVVM/TCA"]}
+                        stack={["Swift", "SwiftUI", "UiKit", "Combine", "Swift Concurrency", "Clean Architecture", "MVVM/TCA"]}
                     />
 
                     <RoleAccordion

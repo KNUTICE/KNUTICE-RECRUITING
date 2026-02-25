@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+/* Overriding the default sans-serif font to use Pretendard.
+  This is the new v4 way to configure the theme.
+*/
+@theme {
+    --font-sans: 'Pretendard', ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+html {
+    scroll-behavior: smooth;
+}

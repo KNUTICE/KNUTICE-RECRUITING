@@ -424,6 +424,20 @@ export default function KnuticeRecruiting() {
                         description="백엔드 팀은 안정적인 알림 발송과 대용량 데이터 처리를 담당하며 서비스의 든든한 뿌리가 되어주고 있어요. 현직자 선배님과 함께 실무 수준의 인프라를 고민하며 시스템을 더 탄탄하게 다져갈 분을 찾아요."
                         stack={["Kotlin", "Spring Boot", "FCM", "Mongo DB", "Kotlin Coroutine", "Docker", "Hexagonal Architecture" ]}
                     />
+
+                    <RoleAccordion
+                        title="프로덕트 디자이너"
+                        isBeta={true} // Founding Member 뱃지
+                        description="현재 500명이 넘는 학우들이 매달 KNUTICE를 열어보고 있어요. 이제는 단순한 기능 구현을 넘어, 유저의 일상에 자연스럽게 스며드는 '다정한 경험'을 설계할 분이 필요해요. 디자이너는 화면을 그리는 사람을 넘어 서비스의 방향성을 함께 결정하는 가장 중요한 목소리가 됩니다. 진짜 유저의 데이터를 보며 디자인의 임팩트를 확인하는 짜릿함을 함께 나눠요."
+                        stack={[
+                            "Figma",
+                            "UI/UX Design",
+                            "Design System",
+                            "Prototyping",
+                            "Data-informed UX"
+                        ]}
+                        note="완벽한 툴 숙련도보다 '왜 여기에 이 버튼이 있어야 하는지'에 대한 치열한 고민을 더 좋아해요. 유저의 목소리에 귀 기울이며 디자인 시스템의 첫 단추를 꿰어주실 분을 기다립니다!"
+                    />
                 </motion.div>
             </section>
 

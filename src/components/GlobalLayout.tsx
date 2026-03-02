@@ -50,6 +50,25 @@ export default function Layout() {
                 <Outlet />
             </main>
 
+            {/* Global Footer */}
+            <footer className="py-12 bg-white px-6 border-t border-gray-50"> {/* Use a very light gray for the top border */}
+                <div className="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+                    <p className="text-gray-400 text-xs">
+                        © 2026 KNUTICE Team. All rights reserved.
+                    </p>
+                    <div className="flex gap-6">
+                        <Link
+                            to="/privacy"
+                            className="text-gray-400 text-xs hover:text-gray-900 transition-colors"
+                        >
+                            개인정보처리방침
+                        </Link>
+                        <a href="https://github.com/KNUTICE" target="_blank" rel="noopener noreferrer" className="text-gray-400 text-xs hover:text-gray-900 transition-colors">
+                            GitHub
+                        </a>
+                    </div>
+                </div>
+            </footer>
         </div>
     );
 }

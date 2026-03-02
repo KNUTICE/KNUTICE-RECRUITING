@@ -4,8 +4,6 @@ import {Code2, Smartphone, Atom, Globe, Cpu, Terminal, ArrowRight} from 'lucide-
 import {Link} from "react-router-dom";
 import {ApplyButton} from "./components/ApplyButton.tsx";
 
-const isApplicationOpen = false;
-
 // --- Configuration & Animation Variants ---
 const fadeInUp: Variants = {
     hidden: { opacity: 0, y: 40 },
@@ -501,16 +499,6 @@ export default function KnuticeRecruiting() {
                     <p className="text-xl text-gray-500 mb-12 break-keep">즐겁게 도전하고 함께 성장할 동료를 기다립니다.</p>
 
                     <div className="flex flex-col items-center gap-4">
-                        {!isApplicationOpen && (
-                            <motion.span
-                                initial={{ opacity: 0, y: 10 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                className="bg-knutice-light text-knutice text-xs font-bold px-3 py-1 rounded-full border border-knutice-soft"
-                            >
-                                Coming Soon: Mar 3rd
-                            </motion.span>
-                        )}
-
                         <ApplyButton largeText={true} className="w-full sm:w-auto px-8 py-4 text-lg rounded-2xl" />
                     </div>
                 </motion.div>
@@ -539,26 +527,6 @@ export default function KnuticeRecruiting() {
                     </div>
                 </div>
             </section>
-
-            {/* Footer */}
-            <footer className="py-12 bg-white px-6 border-t border-gray-50"> {/* Use a very light gray for the top border */}
-                <div className="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-                    <p className="text-gray-400 text-xs">
-                        © 2026 KNUTICE Team. All rights reserved.
-                    </p>
-                    <div className="flex gap-6">
-                        <Link
-                            to="/privacy"
-                            className="text-gray-400 text-xs hover:text-gray-900 transition-colors"
-                        >
-                            개인정보처리방침
-                        </Link>
-                        <a href="https://github.com/KNUTICE" target="_blank" rel="noopener noreferrer" className="text-gray-400 text-xs hover:text-gray-900 transition-colors">
-                            GitHub
-                        </a>
-                    </div>
-                </div>
-            </footer>
         </div>
     );
 }

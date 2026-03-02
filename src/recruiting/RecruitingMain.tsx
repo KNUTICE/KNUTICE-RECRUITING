@@ -1,7 +1,8 @@
 import {useEffect, useState} from 'react';
 import { motion, AnimatePresence, type Variants } from 'framer-motion';
-import { Code2, Smartphone, Atom, Globe, Cpu, Terminal } from 'lucide-react';
+import {Code2, Smartphone, Atom, Globe, Cpu, Terminal, ArrowRight} from 'lucide-react';
 import {Link} from "react-router-dom";
+import {ApplyButton} from "./components/ApplyButton.tsx";
 
 const isApplicationOpen = false;
 
@@ -173,35 +174,13 @@ const TeamMemberCard = ({name, role, tags, description, githubId }: {
 );
 
 export default function KnuticeRecruiting() {
-    const googleFormLink = "https://forms.gle/q2mAo43WWWKEd4Mc7";
-
     // 1. Automatically scroll to the top when the page mounts
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
 
     return (
-        <div className="bg-[#F9FAFB] min-h-screen font-sans text-gray-900 selection:bg-blue-200">
-            {/* Navigation */}
-            <nav className="fixed top-0 w-full bg-white/80 backdrop-blur-md z-50 border-b border-gray-100 px-6 py-4 flex justify-between items-center">
-                <div className="text-xl font-bold tracking-tight">KNUTICE</div>
-                <button
-                    onClick={() => {
-                        if (!isApplicationOpen) {
-                            alert("지원 기간이 아닙니다. 3월 3일에 모집이 시작되니 조금만 기다려주세요!");
-                        } else {
-                            window.open(googleFormLink, "_blank");
-                        }
-                    }}
-                    className={`px-5 py-2 rounded-full font-semibold text-sm transition-colors ${
-                        isApplicationOpen
-                            ? "bg-knutice text-white hover:bg-knutice-dark shadow-knutice"
-                            : "bg-gray-100 text-gray-400 cursor-not-allowed"
-                    }`} >
-                    {isApplicationOpen ? "팀에 합류하기" : "3월 3일 모집 시작"}
-                </button>
-            </nav>
-
+        <div className="bg-[#F9FAFB] min-h-screen font-sans text-gray-900 selection:bg-blue-200 break-keep">
             {/* Hero Section */}
             <section className="pt-40 pb-32 px-6 flex flex-col items-center justify-center text-center">
                 <motion.div initial="hidden" animate="visible" variants={staggerContainer}>
@@ -310,6 +289,16 @@ export default function KnuticeRecruiting() {
                             description="현재 IT 기업에서 근무 중인 현직 개발자예요. 실무에서의 경험을 팀에 공유하며, 안정적인 서버 환경과 데이터 파이프라인 구축을 지원하고 있어요."
                         />
                     </div>
+
+                    <div className="mt-8 flex justify-center">
+                        <Link
+                            to="/team"
+                            className="group flex items-center gap-2 px-6 py-3 bg-white border border-gray-200 rounded-full text-sm font-bold text-gray-700 hover:border-knutice hover:text-knutice transition-all shadow-sm"
+                        >
+                            Team KNUTICE 옅보기
+                            <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                        </Link>
+                    </div>
                 </motion.div>
             </section>
 
@@ -384,6 +373,24 @@ export default function KnuticeRecruiting() {
                                 따라서 기존의 코드를 이해하고 조화롭게 연결하는 과정에서 네이티브 언어를 함께 탐구하려는 마음가짐이 있다면,
                                 크로스 플랫폼 개발자분들에게도 성장의 큰 기회가 될 거라 믿고 있어요.
                             </p>
+                        </motion.div>
+                        <motion.div
+                            className="max-w-4xl mx-auto bg-gray-900 rounded-[2rem] p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-6 shadow-lg"
+                            variants={fadeInUp}>
+                            <div>
+                                <h3 className="text-white text-xl md:text-2xl font-bold mb-2">
+                                    눈치 보지 않고 질문하는 곳 💬
+                                </h3>
+                                <p className="text-gray-400">
+                                    코드 리뷰 부터 주간 파트 미팅까지, 우리가 성장하는 방식을 모두 공개합니다.
+                                </p>
+                            </div>
+                            <Link
+                                to="/culture"
+                                className="shrink-0 bg-white text-gray-900 px-6 py-3 rounded-2xl font-bold hover:bg-gray-50 transition-colors flex items-center gap-2"
+                            >
+                                우리가 성장하는 방식 엿보기 <ArrowRight size={18} />
+                            </Link>
                         </motion.div>
                     </div>
                 </motion.div>
@@ -504,21 +511,7 @@ export default function KnuticeRecruiting() {
                             </motion.span>
                         )}
 
-                        <button
-                            onClick={() => {
-                                if (!isApplicationOpen) {
-                                    alert("지원 기간이 아닙니다. 3월 3일에 모집이 시작되니 조금만 기다려주세요!");
-                                } else {
-                                    window.open(googleFormLink, "_blank");
-                                }
-                            }}
-                            className={`px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 ${
-                                isApplicationOpen
-                                    ? "bg-knutice text-white hover:bg-knutice-dark shadow-knutice"
-                                    : "bg-gray-100 text-gray-400 cursor-not-allowed"
-                            }`} >
-                            {isApplicationOpen ? "팀에 합류하기" : "3월 3일 모집 시작"}
-                        </button>
+                        <ApplyButton largeText={true} className="w-full sm:w-auto px-8 py-4 text-lg rounded-2xl" />
                     </div>
                 </motion.div>
             </section>

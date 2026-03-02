@@ -1,7 +1,5 @@
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowLeft } from 'lucide-react';
-import { Link } from 'react-router-dom';
 
 export default function PrivacyPage() {
     // 1. Automatically scroll to the top when the page mounts
@@ -11,19 +9,6 @@ export default function PrivacyPage() {
 
     return (
         <div className="min-h-screen bg-gray-50 font-sans text-gray-900 selection:bg-knutice-light selection:text-knutice break-keep">
-            {/* Simple Navigation Header */}
-            <header className="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-gray-100">
-                <div className="max-w-3xl mx-auto px-6 h-16 flex items-center">
-                    <Link
-                        to="/"
-                        className="flex items-center gap-2 text-sm font-bold text-gray-500 hover:text-gray-900 transition-colors"
-                    >
-                        <ArrowLeft size={18} />
-                        <span>지원 페이지로 돌아가기</span>
-                    </Link>
-                </div>
-            </header>
-
             {/* Main Content Area */}
             <main className="max-w-3xl mx-auto px-6 py-16 md:py-24">
                 <motion.div

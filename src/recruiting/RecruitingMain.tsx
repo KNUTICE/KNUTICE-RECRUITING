@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
 import { motion, AnimatePresence, type Variants } from 'framer-motion';
-import {Code2, Smartphone, Atom, Globe, Cpu, Terminal, ArrowRight} from 'lucide-react';
+import {Code2, Smartphone, Atom, Globe, Cpu, ArrowRight} from 'lucide-react';
 import {Link} from "react-router-dom";
 import {ApplyButton} from "./components/ApplyButton.tsx";
 
@@ -32,7 +32,6 @@ const TechIcon = ({ name }: { name: string }) => {
         ios: Smartphone,
         react: Atom,        // Lucide actually has an 'Atom' icon!
         web: Globe,
-        backend: Terminal,
     };
 
     const IconComponent = iconMap[name.toLowerCase()] || Code2;
@@ -435,12 +434,6 @@ export default function KnuticeRecruiting() {
                         description="웹 팀은 KNUTICE의 생태계를 확장할 첫 파운딩 멤버를 모셔요! 관리자 페이지부터 공지 통합 웹 서비스까지, 제로베이스부터 우리 팀만의 웹 표준을 만들어가는 즐거움을 느껴보세요."
                         stack={["React", "TypeScript", "Vite", "Tailwind CSS", "Framer Motion", "Zustand", "React Query"]}
                         note="파운딩 멤버가 결정되면 팀원들의 경험과 제안에 따라 아키텍처와 기술 스택을 언제든 유연하게 논의하고 변경할 수 있어요."
-                    />
-
-                    <RoleAccordion
-                        title="Backend 개발자"
-                        description="백엔드 팀은 안정적인 알림 발송과 대용량 데이터 처리를 담당하며 서비스의 든든한 뿌리가 되어주고 있어요. 현직자 선배님과 함께 실무 수준의 인프라를 고민하며 시스템을 더 탄탄하게 다져갈 분을 찾아요."
-                        stack={["Kotlin", "Spring Boot", "FCM", "Mongo DB", "Kotlin Coroutine", "Docker", "Hexagonal Architecture" ]}
                     />
 
                     <RoleAccordion

@@ -83,7 +83,7 @@ export default function TeamPage() {
             {/* 3. Member Introductions (Odd - Gray) -> White Cards pop perfectly here! */}
             <section className="bg-gray-50 py-24">
                 <div className="max-w-4xl mx-auto px-6">
-                    <h2 className="text-2xl font-extrabold mb-8 pl-2">팀 리더 라인업</h2>
+                    <h2 className="text-2xl font-extrabold mb-8 pl-2">팀 라인업</h2>
                     <motion.div variants={staggerContainer} initial="hidden" whileInView="show" viewport={{ once: true, margin: "-100px" }} className="space-y-6">
 
                         {/* iOS Lead Card */}
@@ -138,6 +138,24 @@ export default function TeamPage() {
                             <div className="flex gap-4 text-gray-400">
                                 <a href="https://github.com/seob7" className="hover:text-gray-900 transition-colors"><Github size={20} /></a>
                                 <a href="mailto:svj7531@gmail.com" className="hover:text-gray-900 transition-colors"><Mail size={20} /></a>
+                            </div>
+                        </motion.div>
+
+                        {/* Backend Developer Card */}
+                        <motion.div variants={fadeInUp} className="bg-white rounded-[2rem] p-6 md:p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                            <div className="flex items-center gap-5 mb-5">
+                                <img src="https://github.com/kth4778.png" alt="Backend Developer" className="w-16 h-16 rounded-full object-cover shadow-sm border border-gray-100" />
+                                <div className="flex flex-col">
+                                    <h3 className="text-xl font-bold text-gray-900">김태현</h3>
+                                    <p className="text-emerald-500 font-semibold text-sm">Backend Developer</p>
+                                </div>
+                            </div>
+                            <p className="text-gray-600 leading-relaxed mb-6">
+                                "팀에 합류해 서버 API 개발을 담당하고 있어요. 현직 선배님의 코드 리뷰를 받으며, 실제 사용자가 있는 서비스의 백엔드를 함께 키워가는 재미에 빠져 있답니다. 저처럼 성장하고 싶은 분들과 함께하게 되길 기다리고 있어요!"
+                            </p>
+                            <div className="flex gap-4 text-gray-400">
+                                <a href="https://github.com/kth4778" className="hover:text-gray-900 transition-colors"><Github size={20} /></a>
+                                <a href="mailto:cnblue123429@gmail.com" className="hover:text-gray-900 transition-colors"><Mail size={20} /></a>
                             </div>
                         </motion.div>
 

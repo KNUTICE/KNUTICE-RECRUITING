@@ -221,7 +221,7 @@ export default function KnuticeRecruiting() {
 
                     <div className="max-w-3xl mx-auto text-left md:text-center space-y-6">
                         <motion.p variants={fadeInUp} className="text-gray-600 leading-relaxed text-lg break-keep">
-                            KNUTICE는 매달 500명이 넘는 학우들이 사용하는 서비스로 자리 잡았어요. 현재 팀을 조율하는 iOS 개발자, 안드로이드 개발자, 그리고 백엔드 개발자까지 총 3명의 팀원이 즐겁게 서비스를 키워가고 있답니다.
+                            KNUTICE는 매달 500명이 넘는 학우들이 사용하는 서비스로 자리 잡았어요. 현재 팀을 조율하는 iOS 개발자, 안드로이드 개발자, 그리고 두 명의 백엔드 개발자까지 총 4명의 팀원이 즐겁게 서비스를 키워가고 있답니다.
                         </motion.p>
 
                         {/* Combined Callout Box for High Impact Selling Points */}
@@ -264,7 +264,7 @@ export default function KnuticeRecruiting() {
                         </motion.p>
                     </motion.div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <TeamMemberCard
                             name="iOS 개발자"
                             role="iOS Developer"
@@ -285,6 +285,13 @@ export default function KnuticeRecruiting() {
                             githubId="seob7"
                             tags={["Alumni", "Industry Pro"]}
                             description="현재 IT 기업에서 근무 중인 현직 개발자예요. 실무에서의 경험을 팀에 공유하며, 안정적인 서버 환경과 데이터 파이프라인 구축을 지원하고 있어요."
+                        />
+                        <TeamMemberCard
+                            name="백엔드 개발자"
+                            role="Backend Developer"
+                            githubId="kth4778"
+                            tags={["SW Maestro"]}
+                            description="팀에 합류해 서버 API 개발을 담당하고 있어요. 현직 선배님의 코드 리뷰를 받으며, 실제 사용자가 있는 서비스의 백엔드를 함께 키워가는 재미에 빠져 있답니다."
                         />
                     </div>
 

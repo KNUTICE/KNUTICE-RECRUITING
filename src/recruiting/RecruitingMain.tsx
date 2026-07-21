@@ -210,7 +210,7 @@ export default function KnuticeRecruiting() {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
                         <motion.div variants={fadeInUp} className="p-8 rounded-3xl bg-gray-50 flex flex-col items-center justify-center">
-                            <span className="text-5xl font-extrabold text-knutice mb-2">800+</span>
+                            <span className="text-5xl font-extrabold text-knutice mb-2">1,100+</span>
                             <span className="text-lg text-gray-600 font-medium">누적 사용자</span>
                         </motion.div>
                         <motion.div variants={fadeInUp} className="p-8 rounded-3xl bg-gray-50 flex flex-col items-center justify-center">

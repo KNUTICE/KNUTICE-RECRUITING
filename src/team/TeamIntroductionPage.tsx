@@ -50,7 +50,7 @@ export default function TeamPage() {
                         <h2 className="text-2xl font-extrabold mb-6">우리가 만든 변화</h2>
                         <div className="mb-6">
                             <p className="text-gray-600 leading-relaxed text-lg md:text-xl">
-                                여기저기 흩어져 찾아보기 힘들었던 학교 공지사항을, 누구나 스마트폰에서 가장 편하게 볼 수 있도록 바꿨어요. 현재 <strong>누적 800명 이상, 월간 활성 사용자(MAU) 500명 이상</strong>이 매일 KNUTICE를 열어보고 있답니다. 백문이 불여일견, 우리가 빚어낸 프로덕트를 직접 확인해 보세요.
+                                여기저기 흩어져 찾아보기 힘들었던 학교 공지사항을, 누구나 스마트폰에서 가장 편하게 볼 수 있도록 바꿨어요. 현재 <strong>누적 1,100명 이상, 월간 활성 사용자(MAU) 500명 이상</strong>이 매일 KNUTICE를 열어보고 있답니다. 백문이 불여일견, 우리가 빚어낸 프로덕트를 직접 확인해 보세요.
                             </p>
                         </div>
 

@@ -268,28 +268,28 @@ export default function KnuticeRecruiting() {
                             name="iOS 개발자"
                             role="iOS Developer"
                             githubId="jeongHunE"
-                            tags={["Alumni", "iOS Lead"]}
+                            tags={["Alumni", "iOS Lead", "Industry Pro"]}
                             description="iOS 앱 아키텍처 설계와 전반적인 팀 조율을 담당하고 있어요. 아이폰 사용자들에게 최적화된 UX를 제공하기 위해 고민하고 실천하고 있어요."
                         />
                         <TeamMemberCard
                             name="안드로이드 개발자"
                             role="Android Developer"
                             githubId="doyoonkim3312"
-                            tags={["Android Lead"]}
+                            tags={["Android Lead", "Industry Pro"]}
                             description="안드로이드 앱의 전반적인 개발과 유지보수를 담당하고 있어요. 탄탄한 설계를 바탕으로 사용자에게 가장 신뢰받는 앱을 만드는 데 집중하고 있어요."
                         />
                         <TeamMemberCard
                             name="백엔드 개발자"
                             role="Backend Developer"
                             githubId="seob7"
-                            tags={["Alumni", "Industry Pro"]}
+                            tags={["Alumni", "Backend Lead", "Industry Pro"]}
                             description="현재 IT 기업에서 근무 중인 현직 개발자예요. 실무에서의 경험을 팀에 공유하며, 안정적인 서버 환경과 데이터 파이프라인 구축을 지원하고 있어요."
                         />
                         <TeamMemberCard
                             name="백엔드 개발자"
                             role="Backend Developer"
                             githubId="kth4778"
-                            tags={["SW Maestro"]}
+                            tags={["Alumni", "SW Maestro"]}
                             description="팀에 합류해 서버 API 개발을 담당하고 있어요. 현직 선배님의 코드 리뷰를 받으며, 실제 사용자가 있는 서비스의 백엔드를 함께 키워가는 재미에 빠져 있답니다."
                         />
                     </div>
@@ -419,7 +419,7 @@ export default function KnuticeRecruiting() {
                     <RoleAccordion
                         title="iOS 개발자"
                         description="iOS 팀은 Swift 고유의 강점을 살려 아이폰 사용자들에게 최적화된 매끄러운 경험을 설계하고 있어요. 강력한 네이티브 성능과 직관적인 UI를 통해 학우들에게 필요한 가치를 직접 전달해 나가는 보람을 공유하고 싶어요."
-                        stack={["Swift", "SwiftUI", "UIKit", "Combine", "Swift Concurrency", "Clean Architecture", "MVVM/TCA"]}
+                        stack={["Swift", "SwiftUI", "UIKit", "Combine", "Swift Concurrency", "Clean Architecture", "MVVM/TCA", "Core Data"]}
                     />
 
                     <RoleAccordion

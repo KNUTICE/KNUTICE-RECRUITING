@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
 import { motion, AnimatePresence, type Variants } from 'framer-motion';
-import {Code2, Smartphone, Atom, Globe, Cpu, Terminal, ArrowRight} from 'lucide-react';
+import {Code2, Smartphone, Atom, Globe, Cpu, ArrowRight} from 'lucide-react';
 import {Link} from "react-router-dom";
 import {ApplyButton} from "./components/ApplyButton.tsx";
 
@@ -32,7 +32,6 @@ const TechIcon = ({ name }: { name: string }) => {
         ios: Smartphone,
         react: Atom,        // Lucide actually has an 'Atom' icon!
         web: Globe,
-        backend: Terminal,
     };
 
     const IconComponent = iconMap[name.toLowerCase()] || Code2;
@@ -269,28 +268,28 @@ export default function KnuticeRecruiting() {
                             name="iOS 개발자"
                             role="iOS Developer"
                             githubId="jeongHunE"
-                            tags={["Alumni", "iOS Lead"]}
+                            tags={["Alumni", "iOS Lead", "Industry Pro"]}
                             description="iOS 앱 아키텍처 설계와 전반적인 팀 조율을 담당하고 있어요. 아이폰 사용자들에게 최적화된 UX를 제공하기 위해 고민하고 실천하고 있어요."
                         />
                         <TeamMemberCard
                             name="안드로이드 개발자"
                             role="Android Developer"
                             githubId="doyoonkim3312"
-                            tags={["Android Lead"]}
+                            tags={["Android Lead", "Industry Pro"]}
                             description="안드로이드 앱의 전반적인 개발과 유지보수를 담당하고 있어요. 탄탄한 설계를 바탕으로 사용자에게 가장 신뢰받는 앱을 만드는 데 집중하고 있어요."
                         />
                         <TeamMemberCard
                             name="백엔드 개발자"
                             role="Backend Developer"
                             githubId="seob7"
-                            tags={["Alumni", "Industry Pro"]}
+                            tags={["Alumni", "Backend Lead", "Industry Pro"]}
                             description="현재 IT 기업에서 근무 중인 현직 개발자예요. 실무에서의 경험을 팀에 공유하며, 안정적인 서버 환경과 데이터 파이프라인 구축을 지원하고 있어요."
                         />
                         <TeamMemberCard
                             name="백엔드 개발자"
                             role="Backend Developer"
                             githubId="kth4778"
-                            tags={["SW Maestro"]}
+                            tags={["KNUT Student", "SW Maestro"]}
                             description="팀에 합류해 서버 API 개발을 담당하고 있어요. 현직 선배님의 코드 리뷰를 받으며, 실제 사용자가 있는 서비스의 백엔드를 함께 키워가는 재미에 빠져 있답니다."
                         />
                     </div>
@@ -420,7 +419,7 @@ export default function KnuticeRecruiting() {
                     <RoleAccordion
                         title="iOS 개발자"
                         description="iOS 팀은 Swift 고유의 강점을 살려 아이폰 사용자들에게 최적화된 매끄러운 경험을 설계하고 있어요. 강력한 네이티브 성능과 직관적인 UI를 통해 학우들에게 필요한 가치를 직접 전달해 나가는 보람을 공유하고 싶어요."
-                        stack={["Swift", "SwiftUI", "UiKit", "Combine", "Swift Concurrency", "Clean Architecture", "MVVM/TCA"]}
+                        stack={["Swift", "SwiftUI", "UIKit", "Combine", "Swift Concurrency", "Clean Architecture", "MVVM/TCA", "Core Data"]}
                     />
 
                     <RoleAccordion
@@ -435,12 +434,6 @@ export default function KnuticeRecruiting() {
                         description="웹 팀은 KNUTICE의 생태계를 확장할 첫 파운딩 멤버를 모셔요! 관리자 페이지부터 공지 통합 웹 서비스까지, 제로베이스부터 우리 팀만의 웹 표준을 만들어가는 즐거움을 느껴보세요."
                         stack={["React", "TypeScript", "Vite", "Tailwind CSS", "Framer Motion", "Zustand", "React Query"]}
                         note="파운딩 멤버가 결정되면 팀원들의 경험과 제안에 따라 아키텍처와 기술 스택을 언제든 유연하게 논의하고 변경할 수 있어요."
-                    />
-
-                    <RoleAccordion
-                        title="Backend 개발자"
-                        description="백엔드 팀은 안정적인 알림 발송과 대용량 데이터 처리를 담당하며 서비스의 든든한 뿌리가 되어주고 있어요. 현직자 선배님과 함께 실무 수준의 인프라를 고민하며 시스템을 더 탄탄하게 다져갈 분을 찾아요."
-                        stack={["Kotlin", "Spring Boot", "FCM", "Mongo DB", "Kotlin Coroutine", "Docker", "Hexagonal Architecture" ]}
                     />
 
                     <RoleAccordion

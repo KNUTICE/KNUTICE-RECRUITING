@@ -289,7 +289,7 @@ export default function KnuticeRecruiting() {
                             name="백엔드 개발자"
                             role="Backend Developer"
                             githubId="kth4778"
-                            tags={["Alumni", "SW Maestro"]}
+                            tags={["KNUT Student", "SW Maestro"]}
                             description="팀에 합류해 서버 API 개발을 담당하고 있어요. 현직 선배님의 코드 리뷰를 받으며, 실제 사용자가 있는 서비스의 백엔드를 함께 키워가는 재미에 빠져 있답니다."
                         />
                     </div>

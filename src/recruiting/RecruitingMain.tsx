@@ -228,7 +228,7 @@ export default function KnuticeRecruiting() {
                             <div>
                                 <p className="font-bold text-lg mb-2 break-keep">💡 현직자 선배님과 함께하는 성장의 기회</p>
                                 <p className="text-blue-700/80 leading-relaxed break-keep">
-                                    팀에는 현직 IT 업계에서 활동 중인 백엔드 개발자 선배님도 함께하고 계세요. 학생 수준의 프로젝트를 넘어, 실제 실무 관점의 피드백을 직접 받으며 프로덕션 환경의 협업을 경험해 볼 수 있는 소중한 기회예요.
+                                    "KNUTICE를 시작한 초기 멤버 세 명 모두 어엿한 현직 개발자가 되었어요. 우리 팀에서는 학생 수준의 개발을 넘어, 취업에 직접적으로 도움이 되는 실무 관점의 피드백과 프로덕션 레벨의 협업을 가장 가까이서 경험할 수 있어요.
                                 </p>
                             </div>
 
